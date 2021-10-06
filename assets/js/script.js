@@ -1,35 +1,46 @@
 const mainPage = document.querySelector(".main-page");
 const starterDiv = document.querySelector(".start-quiz-container");
+const startQuizBtn = document.querySelector(".start-btn");
+const counterDisplay = document.querySelector("#countdown");
 
-const questionAndAnswers = {};
+// list of the question and answers of the quiz
+const questionAndAnswers = [
+  {
+    question: "Question 1",
+    options: [" Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    answer: "Answer 3",
+  },
+
+  {
+    question: "Question 2",
+    options: [" Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    answer: "Answer 1",
+  },
+];
 
 // setting up a timer function
-const timer = setInterval(startCountDown, 1000);
+let count = 20;
 
-let count = 50;
+function countDownTimer() {
+  const timer = setInterval(startCountDown, 1000);
 
-function startCountDown() {
-  const counterDisplay = document.querySelector("#countdown");
-
-  if (count === 0) {
-    clearInterval(timer);
-  } else {
-    counterDisplay.textContent = count;
-
-    count -= 1;
+  function startCountDown() {
+    if (count === 0) {
+      clearInterval(timer);
+    } else {
+      counterDisplay.textContent = count;
+      count -= 1;
+    }
   }
 }
 
-//set upp an event listener attached to the starterDiv to remove the page
+//set upp an event listener attached to the starterDiv to remove the page when button is clicked and the timer starts
 
-starterDiv.addEventListener("click", startBtn);
+startQuizBtn.addEventListener("click", startQuiz);
 
-function startBtn(event) {
-  const target = event.target;
-
-  if (target.getAttribute("class") === "start-btn") {
-    starterDiv.remove();
-  }
+function startQuiz(event) {
+  starterDiv.remove();
+  countDownTimer();
 }
 
 // testing html question card for answer validation using console.log
@@ -45,6 +56,7 @@ function onClick(event) {
   if (target.getAttribute("class") === "options") {
     const dataText = target.getAttribute("data-message");
     const dataMessage = currentTarget.getAttribute("data-main");
+
     if (dataText === dataMessage) {
       console.log("correct answer");
       divBox.remove();
@@ -54,3 +66,9 @@ function onClick(event) {
     }
   }
 }
+
+function constructBtnDiv() {
+  const div = document.createElement("div");
+  div.setAttribute("class", "");
+}
+function renderQuestion() {}
