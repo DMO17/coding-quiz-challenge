@@ -31,17 +31,31 @@
           <button class="start-btn">START QUIZ</button>
         </div>
       </div>
-
-      <div class="question-1" data-main="answer 3">
-        <h1>Commonly used data types DO NOT include</h1>
-        <div class="options-container">
-          <button class="options" data-message="answer 1">string</button>
-          <button class="options" data-message="answer 2">boolean</button>
-          <button class="options" data-message="answer 3">alerts</button>
-          <button class="options" data-message="answer 4">numbers</button>
-        </div>
-      </div>
     </main>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
+<!-- testing html question card for answer validation using console.log
+
+const divBox = document.querySelector(".question-1");
+
+divBox.addEventListener("click", onClick);
+
+function onClick(event) {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+
+  if (target.getAttribute("class") === "options") {
+    const dataText = target.getAttribute("data-message");
+    const dataMessage = currentTarget.getAttribute("data-main");
+
+    if (dataText === dataMessage) {
+      console.log("correct answer");
+      divBox.remove();
+    } else {
+      console.log("incorrect answer");
+      divBox.remove();
+    }
+  }
+}-->
