@@ -3,6 +3,23 @@ const starterDiv = document.querySelector(".start-quiz-container");
 
 const questionAndAnswers = {};
 
+// setting up a timer function
+const timer = setInterval(startCountDown, 1000);
+
+let count = 50;
+
+function startCountDown() {
+  const counterDisplay = document.querySelector("#countdown");
+
+  if (count === 0) {
+    clearInterval(timer);
+  } else {
+    counterDisplay.textContent = count;
+
+    count -= 1;
+  }
+}
+
 //set upp an event listener attached to the starterDiv to remove the page
 
 starterDiv.addEventListener("click", startBtn);
