@@ -11,8 +11,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 100px;
 }
 
-.btn {
+.start-btn {
   font-size: 30px;
 }
