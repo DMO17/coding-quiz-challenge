@@ -28,7 +28,7 @@ const questionAndAnswers = [
 let currentQuestion = 0; //rename
 
 // setting up a timer function
-let count = 20;
+let count = 5;
 
 function countDownTimer() {
   const timer = setInterval(startCountDown, 1000);
@@ -37,6 +37,8 @@ function countDownTimer() {
     if (count < 0) {
       clearInterval(timer);
       console.log("renderGameOver"); //function;
+
+      highScoreFormPage();
     } else {
       counterDisplay.textContent = count;
       count -= 1;
@@ -130,6 +132,7 @@ function highScoreFormPage() {
 
   return mainPage;
 }
+
 // set up a local storage for scoring tally for each quiz attempt
 //
 //
@@ -165,8 +168,11 @@ function verifyAnswer(event) {
   //if else statement
 
   if (correctAnswer !== userAnswer) {
-    count -= 5;
-  } else scoreTally(); // add scoring tally function here
+    count -= 10;
+    console.log("answer is incorrect");
+  } else {
+    console.log(`answer is correct`);
+  }
 
   currentQuestion += 1;
 
@@ -178,4 +184,8 @@ function verifyAnswer(event) {
     highScoreFormPage();
   }
 }
-console.log(highScoreFormPage());
+
+// pause timer to lock in score time
+function recordScoreTime(event) {}
+// store scores and initials in local storage
+// create high score page
