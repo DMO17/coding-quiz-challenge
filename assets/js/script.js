@@ -84,13 +84,66 @@ function renderQuestion() {
   mainPage.append(div);
 }
 
-//setting up overall quiz score
+// construct quiz high score form page
 
-let highScore = 0;
+function submitHighScoreForm() {
+  // form element
+  const form = document.createElement("form");
+  form.setAttribute("action", "/action_page.php");
+  form.setAttribute("class", "player-score-form");
 
-function scoreTally() {
-  highScore += 1;
-  return console.log(highScore);
+  // label element
+  const labelName = document.createElement("label");
+  labelName.setAttribute("for", "player-name");
+  labelName.textContent = "Player Initials";
+
+  // input element
+  const inputName = document.createElement("input");
+  inputName.setAttribute("id", "player-name");
+  inputName.setAttribute("type", "text");
+  inputName.setAttribute("name", "player-name");
+  inputName.setAttribute("value", ""); /// value???????????????
+
+  //submit element
+  const submitInput = document.createElement("input");
+  submitInput.setAttribute("type", "submit");
+  submitInput.setAttribute("value", "Submit");
+  submitInput.setAttribute("id", "submit-btn");
+
+  // append label, input and submit input to form
+
+  form.append(labelName, inputName, submitInput);
+
+  return form;
+}
+
+function highScoreFormPage() {
+  const div = document.createElement("div");
+  div.setAttribute("class", "score-form-container");
+
+  const h2 = document.createElement("h2");
+  h2.textContent = "QUIZ COMPLETE";
+
+  div.append(h2, submitHighScoreForm());
+
+  mainPage.append(div);
+
+  return mainPage;
+}
+// set up a local storage for scoring tally for each quiz attempt
+//
+//
+//
+//
+
+//set upp an event listener attached to the starterDiv to remove the page when button is clicked and the timer starts
+
+startQuizBtn.addEventListener("click", startQuiz);
+
+function startQuiz(event) {
+  starterDiv.remove();
+  countDownTimer();
+  renderQuestion();
 }
 
 // declare verify answer function
@@ -106,33 +159,23 @@ function verifyAnswer(event) {
   const correctAnswer = currentTarget.getAttribute("data-main");
   const userAnswer = target.getAttribute("data-message");
 
+  // storing quiz question cards as a variable
+  const quizQuestionCards = document.querySelector(".questionCard");
+
   //if else statement
 
   if (correctAnswer !== userAnswer) {
     count -= 5;
-  } else scoreTally(); // add score function here
+  } else scoreTally(); // add scoring tally function here
 
   currentQuestion += 1;
 
   if (currentQuestion < questionAndAnswers.length) {
-    document.querySelector(".questionCard").remove();
+    quizQuestionCards.remove();
     renderQuestion();
   } else {
-    console.log("render score form ");
+    quizQuestionCards.remove();
+    highScoreFormPage();
   }
 }
-
-//set upp an event listener attached to the starterDiv to remove the page when button is clicked and the timer starts
-
-startQuizBtn.addEventListener("click", startQuiz);
-
-function startQuiz(event) {
-  starterDiv.remove();
-  countDownTimer();
-  renderQuestion();
-}
-
-// get questions
-// get answers
-//refactor interms of names
-// css style your code
+console.log(highScoreFormPage());
