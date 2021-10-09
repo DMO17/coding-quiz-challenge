@@ -34,22 +34,23 @@ const questionAndAnswers = [
   },
 ];
 
-// current question identifier
+// current question identifier index
 
 let currentQuestion = 0; //rename
 
 // setting up a timer function
+let timer;
 let count = 30;
 
 function countDownTimer() {
-  const timer = setInterval(startCountDown, 1000);
+  timer = setInterval(startCountDown, 1000);
 
   function startCountDown() {
-    if (count < 0) {
+    if (count <= 0) {
       clearInterval(timer);
+      count = 0;
+      counterDisplay.textContent = count; // ?????????????????
       console.log("renderGameOver"); //function;
-
-      highScoreFormPage();
     } else {
       counterDisplay.textContent = count;
       count -= 1;
@@ -102,7 +103,6 @@ function renderQuestion() {
 function submitHighScoreForm() {
   // form element
   const form = document.createElement("form");
-  form.setAttribute("action", "/action_page.php");
   form.setAttribute("class", "player-score-form");
 
   // label element
@@ -115,7 +115,7 @@ function submitHighScoreForm() {
   inputName.setAttribute("id", "player-name");
   inputName.setAttribute("type", "text");
   inputName.setAttribute("name", "player-name");
-  inputName.setAttribute("value", ""); /// value???????????????
+  inputName.setAttribute("value", "");
 
   //submit element
   const submitInput = document.createElement("input");
@@ -140,6 +140,10 @@ function highScoreFormPage() {
   div.append(h2, submitHighScoreForm());
 
   mainPage.append(div);
+
+  const submitPlayerDetails = document.querySelector("#submit-btn");
+
+  submitPlayerDetails.addEventListener("click", storingHighScores);
 
   return mainPage;
 }
@@ -191,14 +195,34 @@ function verifyAnswer(event) {
     quizQuestionCards.remove();
     renderQuestion();
   } else {
+    clearInterval(timer);
     quizQuestionCards.remove();
     highScoreFormPage();
   }
 }
 
-// pause timer to lock in score time
-function recordScoreTime(event) {}
-
 // store scores and initials in local storage
 
+function storingHighScores(event) {
+  let name = document.querySelector("#player-name").value;
+  let score = count <= 0 ? 0 : count;
+
+  //get from LS
+  const highScoreDataFromLS =
+    JSON.parse(localStorage.getItem("highScores")) ?? [];
+
+  const playersDetails = {
+    name: name,
+    count: score,
+  };
+
+  highScoreDataFromLS.push(playersDetails);
+
+  // set in LS
+  const convertToLSData = JSON.stringify(highScoreDataFromLS);
+  localStorage.setItem("highScores", convertToLSData);
+}
+
 // create high score page
+
+// when count down is over score page is rendered and nothing
