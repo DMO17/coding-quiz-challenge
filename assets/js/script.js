@@ -6,9 +6,9 @@ const counterDisplay = document.querySelector("#countdown");
 // list of the question and answers of the quiz
 const questionAndAnswers = [
   {
-    question: "Question 1",
-    options: ["answer 1", "answer 2", "answer 3", "answer 4"],
-    answer: "answer 3",
+    question: "Commonly used data types DO NOT include:",
+    options: ["1) strings", "2) booleans", "3) alerts", "4) numbers"],
+    answer: "3) alerts",
   },
 
   {
@@ -84,6 +84,15 @@ function renderQuestion() {
   mainPage.append(div);
 }
 
+//setting up overall quiz score
+
+let highScore = 0;
+
+function scoreTally() {
+  highScore += 1;
+  return console.log(highScore);
+}
+
 // declare verify answer function
 
 function verifyAnswer(event) {
@@ -93,20 +102,20 @@ function verifyAnswer(event) {
   //current target
   const currentTarget = event.currentTarget;
 
+  // matching answers and options
   const correctAnswer = currentTarget.getAttribute("data-main");
-  const userAnswer = currentTarget.getAttribute("data-message");
+  const userAnswer = target.getAttribute("data-message");
 
   //if else statement
 
   if (correctAnswer !== userAnswer) {
     count -= 5;
-  }
+  } else scoreTally(); // add score function here
 
   currentQuestion += 1;
 
   if (currentQuestion < questionAndAnswers.length) {
     document.querySelector(".questionCard").remove();
-
     renderQuestion();
   } else {
     console.log("render score form ");
