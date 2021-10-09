@@ -12,14 +12,25 @@ const questionAndAnswers = [
   },
 
   {
-    question: "Question 2",
-    options: ["answer 1", "answer 2", "answer 3", "answer 4"],
-    answer: "answer 1",
+    question:
+      "The condition in an if / else statement is enclosed within _____",
+    options: [
+      "1) parentheses",
+      "2) quotes",
+      "3) square brackets",
+      "4) curly brackets",
+    ],
+    answer: "1) parentheses",
   },
   {
-    question: "Question 3",
-    options: ["answer 1", "answer 2", "answer 3", "answer 4"],
-    answer: "answer 4",
+    question: "Arrays in javascript can be used to store _____",
+    options: [
+      "1) numbers and strings",
+      "2) multiple arrays and functions",
+      "3) objects and booleans",
+      "4) all of the above",
+    ],
+    answer: "4) all of the above",
   },
 ];
 
@@ -28,7 +39,7 @@ const questionAndAnswers = [
 let currentQuestion = 0; //rename
 
 // setting up a timer function
-let count = 5;
+let count = 30;
 
 function countDownTimer() {
   const timer = setInterval(startCountDown, 1000);
@@ -187,5 +198,7 @@ function verifyAnswer(event) {
 
 // pause timer to lock in score time
 function recordScoreTime(event) {}
+
 // store scores and initials in local storage
+
 // create high score page
