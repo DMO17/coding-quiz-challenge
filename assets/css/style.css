@@ -4,17 +4,60 @@
 
 body {
   margin: 0;
-  font-size: 30px;
+  font-size: 10px;
 }
 
+/* First page of quiz styling */
+
 .quiz-header {
+  font-size: 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 100px;
 }
 
-.start-btn,
+.start-quiz-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.start-quiz-container h1 {
+  font-size: 2.5rem;
+}
+
+.start-quiz-container p {
+  font-size: 1.5rem;
+}
+
+.start-btn {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+/* styling of the quiz card pages */
+
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.questionCard h2 {
+  font-size: 2.5rem;
+}
+
+.options-container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .options {
-  font-size: 30px;
+  margin: 0.5rem;
+  font-size: 2.5rem;
 }
