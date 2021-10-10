@@ -25,6 +25,22 @@ body {
   text-align: center;
 }
 
+.high-score-link,
+.timer-container {
+  border: rgb(34, 24, 51) 2px solid;
+  color: rgb(12, 12, 71);
+}
+
+.high-score-link:hover {
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+.timer-container:hover {
+  background-color: skyblue;
+  cursor: default;
+}
+
 .start-quiz-container h1 {
   font-size: 3rem;
 }
@@ -90,6 +106,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .full-high-score-list-container h1 {
@@ -101,8 +118,20 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: flex-start;
   font-size: 2rem;
   padding-left: 1rem;
+}
+
+.return-btn {
+  font-size: 1.5rem;
+  background-color: lightcoral;
+  border: none;
+  padding: 1.5rem 3.2rem;
+  text-align: center;
+  cursor: pointer;
+  width: 25rem;
+  border: black 0.3rem solid;
 }
 
 /* mobile responsiveness */
