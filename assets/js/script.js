@@ -68,8 +68,6 @@ function countDownTimer() {
       clearInterval(timer);
       counterDisplay.textContent = 0;
       renderGameOver();
-
-      // console.log("renderGameOver"); //function;
     } else {
       counterDisplay.textContent = count;
       count -= 1;
@@ -248,9 +246,6 @@ function verifyAnswer(event) {
   //if else statement to match answers and user option
   if (correctAnswer !== userAnswer) {
     count -= 10;
-    console.log("answer is incorrect", userAnswer);
-  } else {
-    console.log(`answer is correct`, correctAnswer);
   }
 
   currentQuestion += 1;
