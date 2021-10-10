@@ -33,23 +33,41 @@ const questionAndAnswers = [
     ],
     answer: "4) all of the above",
   },
+  {
+    question:
+      "String Values must be enclosed within _____ when being assigned to variables",
+    options: ["1) commas", "2) curly brackets", "3) quotes", "4) parentheses"],
+    answer: "1) commas",
+  },
+  {
+    question:
+      "A very useful tool to use during development and debugging for printing content to debugger is:",
+    options: [
+      "1) javascript",
+      "2) console.log",
+      "3) loops",
+      "4) terminal/bash",
+    ],
+    answer: "2) console.log",
+  },
 ];
 
 // current question identifier index
 
 let currentQuestion = 0; //rename
 
-// setting up a timer function
+// setting up the start timer countdown function
 let timer;
-let count = 30;
+let count = 50;
 
 function countDownTimer() {
   timer = setInterval(startCountDown, 1000);
 
   function startCountDown() {
-    if (count < 0 && counterDisplay.textContent != 0) {
+    if (count < 0) {
       clearInterval(timer);
       counterDisplay.textContent = 0;
+      renderGameOver();
 
       // console.log("renderGameOver"); //function;
     } else {
@@ -98,6 +116,17 @@ function renderQuestion() {
   div.addEventListener("click", verifyAnswer);
 
   mainPage.append(quizQuestion, div);
+}
+
+// render game over and present high score page when time is 0
+function renderGameOver() {
+  // storing quiz question cards as a variable
+  const quizQuestionCards = document.querySelector(".questionCard");
+  const questionTitles = document.querySelector(".questionCardTitle");
+
+  questionTitles.remove();
+  quizQuestionCards.remove();
+  highScoreFormPage();
 }
 
 // construct quiz high score form page
@@ -215,8 +244,8 @@ function verifyAnswer(event) {
   // storing quiz question cards as a variable
   const quizQuestionCards = document.querySelector(".questionCard");
   const questionTitles = document.querySelector(".questionCardTitle");
-  //if else statement
 
+  //if else statement to match answers and user option
   if (correctAnswer !== userAnswer) {
     count -= 10;
     console.log("answer is incorrect", userAnswer);
