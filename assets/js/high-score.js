@@ -42,7 +42,7 @@ function constructHighScoreList() {
 redirectToHome.addEventListener("click", quizPage);
 
 function quizPage(event) {
-  location.assign("./index.html");
+  location.assign("./coding-quiz-challenge/");
 }
 
 constructHighScoreList();
