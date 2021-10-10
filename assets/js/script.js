@@ -289,5 +289,5 @@ function storingHighScores(event) {
 redirectHighScoreLink.addEventListener("click", highScorePage);
 
 function highScorePage(event) {
-  location.assign("coding-quiz-challenge/high-score.html");
+  location.assign("/coding-quiz-challenge/high-score.html");
 }
