@@ -2,6 +2,8 @@ const mainHighScorePage = document.querySelector(
   ".full-high-score-list-container"
 );
 
+const redirectToHome = document.querySelector(".return-btn");
+
 function constructHighScoreList() {
   //create a div container
 
@@ -14,6 +16,10 @@ function constructHighScoreList() {
   highScoreList.setAttribute("class", "hs-ol-list");
 
   const extractData = JSON.parse(localStorage.getItem("highScores"));
+
+  // create return to quiz button
+
+  // construct dynamic unordered list of high scores
 
   for (let i = 0; i < extractData.length; i++) {
     //get data from storage
@@ -30,8 +36,13 @@ function constructHighScoreList() {
 
     mainHighScorePage.append(div);
   }
+}
 
-  return div;
+// redirect to the home URL
+redirectToHome.addEventListener("click", quizPage);
+
+function quizPage(event) {
+  location.assign("/index.html");
 }
 
 constructHighScoreList();
