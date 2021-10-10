@@ -2,6 +2,7 @@ const mainPage = document.querySelector(".main-page");
 const starterDiv = document.querySelector(".start-quiz-container");
 const startQuizBtn = document.querySelector(".start-btn");
 const counterDisplay = document.querySelector("#countdown");
+const redirectHighScoreLink = document.querySelector(".high-score-link");
 
 // list of the question and answers of the quiz
 const questionAndAnswers = [
@@ -255,19 +256,9 @@ function storingHighScores(event) {
   // set in LS
   const convertToLSData = JSON.stringify(highScoreDataFromLS);
   localStorage.setItem("highScores", convertToLSData);
-
-  constructHighScoreList();
 }
 
-//
-//
-//
-//
-
-const redirectHighScoreLink = document.querySelector(".high-score-link");
-
-console.log(redirectHighScoreLink);
-
+// redirect to the high score URL
 redirectHighScoreLink.addEventListener("click", highScorePage);
 
 function highScorePage(event) {

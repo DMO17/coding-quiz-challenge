@@ -39,4 +39,4 @@ function constructHighScoreList() {
   return div;
 }
 
-console.log(constructHighScoreList());
+constructHighScoreList();
