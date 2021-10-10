@@ -89,14 +89,15 @@ function renderQuestion() {
   div.setAttribute("data-main", questionAndAnswers[currentQuestion].answer);
 
   const quizQuestion = document.createElement("h2");
+  quizQuestion.setAttribute("class", "questionCardTitle");
 
   quizQuestion.textContent = questionAndAnswers[currentQuestion].question;
 
-  div.append(quizQuestion, constructBtnDiv());
+  div.append(constructBtnDiv());
 
   div.addEventListener("click", verifyAnswer);
 
-  mainPage.append(div);
+  mainPage.append(quizQuestion, div);
 }
 
 // construct quiz high score form page
@@ -213,23 +214,25 @@ function verifyAnswer(event) {
 
   // storing quiz question cards as a variable
   const quizQuestionCards = document.querySelector(".questionCard");
-
+  const questionTitles = document.querySelector(".questionCardTitle");
   //if else statement
 
   if (correctAnswer !== userAnswer) {
     count -= 10;
-    console.log("answer is incorrect");
+    console.log("answer is incorrect", userAnswer);
   } else {
-    console.log(`answer is correct`);
+    console.log(`answer is correct`, correctAnswer);
   }
 
   currentQuestion += 1;
 
   if (currentQuestion < questionAndAnswers.length) {
+    questionTitles.remove();
     quizQuestionCards.remove();
     renderQuestion();
   } else {
     clearInterval(timer);
+    questionTitles.remove();
     quizQuestionCards.remove();
     highScoreFormPage();
   }

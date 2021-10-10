@@ -8,11 +8,6 @@ function constructHighScoreList() {
   const div = document.createElement("div");
   div.setAttribute("class", "high-score-list-container");
 
-  // create main score header
-
-  const h1 = document.createElement("h1");
-  h1.textContent = "HIGH SCORE LIST";
-
   //create an unordered list
 
   const highScoreList = document.createElement("ul");
@@ -33,7 +28,7 @@ function constructHighScoreList() {
 
     div.append(highScoreList);
 
-    mainHighScorePage.append(h1, div);
+    mainHighScorePage.append(div);
   }
 
   return div;
