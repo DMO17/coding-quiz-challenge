@@ -264,4 +264,12 @@ function storingHighScores(event) {
 //
 //
 
-console.log(constructHighScoreList());
+const redirectHighScoreLink = document.querySelector(".high-score-link");
+
+console.log(redirectHighScoreLink);
+
+redirectHighScoreLink.addEventListener("click", highScorePage);
+
+function highScorePage(event) {
+  location.assign("/high-score.html");
+}
